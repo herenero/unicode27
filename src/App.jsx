@@ -1,30 +1,31 @@
-import { useState, useEffect } from 'react';
-function Hero() { return (<section className="hero" aria-labelledby="hero-title"><div className="eyebrow"><span className="live-dot"></span> INDIE GAME DEVELOPER CONFERENCE <span className="edition">THE NEXT CHAPTER / 27</span></div><h1 id="hero-title" className="hero-word" aria-label="UNICODE 27"><span>UNI</span><span className="moving c">C</span><span>O</span><span className="moving d">D</span><span>E</span><span className="year">27</span></h1><div className="hero-bottom"><div><p className="hero-korean">서로 다른 코드,<br />하나의 가능성.</p><p className="hero-description">게임을 만드는 우리의 이야기.<br />배움과 영감, 그리고 새로운 연결이 시작되는 곳.</p><a className="button dark" href="#about">UNICODE 만나보기 <span>↗</span></a></div><div className="hero-note"><span className="mini-label">MADE OF DIFFERENT CODES.</span><span>CONNECTED BY ONE PASSION.</span><div className="host">HOSTED BY <strong><span className="host-icon">◈</span> UNIDEV</strong></div></div></div><a href="#about" className="scroll">SCROLL TO EXPLORE <span>↓</span></a><span className="hero-cross" aria-hidden="true">+</span></section>); }
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
+import Ticker from './components/common/Ticker';
+import Hero from './sections/Hero';
+import About from './sections/About';
+import Program from './sections/Program';
+import Guide from './sections/Guide';
+import Archive from './sections/Archive';
+import Updates from './sections/Updates';
 
-function About() { return (<section id="about" className="section about"><div className="section-label">01 / ABOUT UNICODE</div><div className="about-grid"><div><h2>우리의 다음 게임은,<br />이 만남에서 시작됩니다<span className="blue">.</span></h2><p className="body-copy">혼자 고민하던 아이디어가 누군가의 경험을 만나<br className="desktop" /> 새로운 가능성으로 이어지는 순간.</p><p className="body-copy">UNICODE는 게임을 만드는 사람들이 경험과 영감을 나누는 인디 게임 개발자 컨퍼런스입니다. 각자의 코드와 이야기가 모여, 함께 만드는 내일을 이야기합니다.</p><a className="text-link" href="#program">함께할 경험 살펴보기 <span>↘</span></a></div><figure className="poster"><img src="assets/poster.png" alt="푸른빛과 노란빛이 번지는 UNICODE 27 그래픽" loading="lazy" /><figcaption>DIFFERENT CODES. ONE COMMUNITY.<span>UNICODE / 27</span></figcaption></figure></div></section>); }
-
-function Program() { return (<section id="program" className="section program"><div className="section-label">02 / THE EXPERIENCE</div><div className="section-heading"><h2>생각을 나누고,<br />가능성을 플레이하다.</h2><p>UNICODE에서 이어질 세 가지 경험.<br />상세 프로그램과 연사 정보는 추후 공개됩니다.</p></div><div className="programs"><article><span className="number">01</span><div className="program-icon" aria-hidden="true">↗</div><p className="mini-label">INSPIRE</p><h3>경험을 나누는 세션</h3><p>개발 과정의 고민부터 새로운 시도까지.<br />게임을 만드는 사람들의 이야기를 만납니다.</p><span className="status">세부 세션 추후 공개</span></article><article><span className="number">02</span><div className="program-icon pixels" aria-hidden="true">✳</div><p className="mini-label">DISCOVER</p><h3>새로운 영감의 발견</h3><p>서로 다른 아이디어와 시선이 만나는 곳.<br />당신의 다음 도전을 위한 영감을 발견합니다.</p><span className="status">상세 프로그램 추후 공개</span></article><article><span className="number">03</span><div className="program-icon" aria-hidden="true">↔</div><p className="mini-label">CONNECT</p><h3>함께 만드는 연결</h3><p>같은 열정, 서로 다른 경험.<br />게임이라는 공통의 언어로 연결됩니다.</p><span className="status">참여 안내 추후 공개</span></article></div></section>); }
-
-function Guide() { return (<section id="guide" className="section guide"><div className="section-label">03 / PARTICIPATION</div><div className="guide-grid"><h2>다음 만남을<br />준비하고 있어요.</h2><div><div className="info-row"><span>행사 일정</span><strong>추후 공개</strong></div><div className="info-row"><span>행사 장소</span><strong>추후 공개</strong></div><div className="info-row"><span>참가 신청</span><strong><i className="live-dot"></i> 오픈 준비 중</strong></div><p className="guide-note">일정과 장소, 참가 방법이 확정되면 이곳에서 안내드릴게요.</p></div></div><div className="faq"><details><summary>누가 함께할 수 있나요?<span>＋</span></summary><p>게임 개발에 관심 있는 분들을 위한 자리입니다. 구체적인 참가 대상과 신청 조건은 공식 참가 안내와 함께 공개됩니다.</p></details><details><summary>참가 신청은 언제 시작되나요?<span>＋</span></summary><p>UNICODE 27 참가 신청 일정은 아직 공개되지 않았습니다. UNIDEV 공식 인스타그램과 이 사이트에서 새로운 소식을 확인해주세요.</p></details><details><summary>지난 행사 강연을 볼 수 있나요?<span>＋</span></summary><p>네, 아래 아카이브에서 UNICODE 26의 세션 다시보기를 확인할 수 있습니다.</p></details></div></section>); }
-
-function Archive() { return (<section id="archive" className="archive"><div className="archive-art" aria-hidden="true"><span>26</span><small>THE STORIES CONTINUE.</small></div><div className="archive-copy"><div className="section-label">04 / ARCHIVE</div><h2>지난 영감이,<br />다음 시작으로.</h2><p>UNICODE 26에서 나눴던 이야기들.<br />놓쳤던 세션과 다시 듣고 싶은 순간을 만나보세요.</p><a className="button dark" href="https://www.youtube.com/playlist?list=PLJGO6Gt24pG41wLsdQze_2w6yPWfp2buG&si=BUyN1F376_OZC9mN" target="_blank" rel="noopener noreferrer">26 세션 다시보기 <span>↗</span></a><a className="archive-link" href="https://unicode.unidev.kr/" target="_blank" rel="noopener noreferrer">지난 행사 사이트 방문 ↗</a></div></section>); }
-
-function Updates() { return (<section id="updates" className="section updates"><div className="section-label">STAY IN THE LOOP</div><h2>우리의 다음 챕터,<br />함께해요<span className="blue">.</span></h2><p>UNICODE 27의 새로운 소식을 가장 가까이에서.</p><a className="button dark" href="https://www.instagram.com/unidev.official/" target="_blank" rel="noopener noreferrer">UNIDEV 소식 확인하기 <span>↗</span></a></section>); }
+// 페이지 섹션을 추가하거나 순서를 바꾸려면 이곳을 수정하세요.
 export default function App() {
-const [menuOpen,setMenuOpen]=useState(false);
-useEffect(()=>{const close=e=>{if(e.key==='Escape') {setMenuOpen(false);document.querySelector('.menu')?.focus();}};document.addEventListener('keydown',close);return()=>document.removeEventListener('keydown',close);},[]);
-return (<>
-<a className="skip" href="#main">본문으로 이동</a>
-<header><a className="brand" href="#" aria-label="UNICODE 27 홈">UNI<span className="brand-c">C</span>ODE <sup>27</sup></a><button className="menu" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "메뉴 닫기" : "메뉴 열기"} aria-expanded={menuOpen} aria-controls="navigation">MENU <span>{menuOpen ? "−" : "＋"}</span></button><nav className={menuOpen ? "open" : ""} onClick={(event) => { if (event.target.closest("a")) setMenuOpen(false); }} id="navigation" aria-label="주 메뉴"><a href="#about">행사 소개</a><a href="#program">프로그램</a><a href="#guide">참가 안내</a><a href="#archive">아카이브</a><a className="nav-cta" href="#updates">새로운 소식 <span>↗</span></a></nav></header>
-<main id="main">
-<Hero />
-<div className="ticker" aria-hidden="true"><span>CREATE.</span><span className="outline">CONNECT.</span><span>PLAY.</span><span className="asterisk">✳</span><span>CREATE.</span><span className="outline">CONNECT.</span><span>PLAY.</span></div>
-<About />
-<Program />
-<Guide />
-<Archive />
-<Updates />
-</main><footer><div className="footer-top"><a className="brand" href="#">UNICODE <sup>27</sup></a><p>서로 다른 코드, 하나의 가능성.</p><a href="mailto:officialunidev@gmail.com">officialunidev@gmail.com ↗</a></div><div className="footer-bottom"><span>© UNIDEV. All rights reserved.</span><div><a href="https://www.instagram.com/unidev.official/" target="_blank" rel="noopener noreferrer">INSTAGRAM ↗</a><a href="https://pf.kakao.com/_LxgSvn" target="_blank" rel="noopener noreferrer">KAKAO TALK ↗</a><a href="#">BACK TO TOP ↑</a></div></div></footer>
-</>);
+  return (
+    <>
+      <a className="skip" href="#main">
+        본문으로 이동
+      </a>
+      <Header />
+      <main id="main">
+        <Hero />
+        <Ticker />
+        <About />
+        <Program />
+        <Guide />
+        <Archive />
+        <Updates />
+      </main>
+      <Footer />
+    </>
+  );
 }
-

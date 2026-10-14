@@ -1,0 +1,129 @@
+/* 여러 섹션에서 사용하는 버튼, 제목, 공통 스타일 */
+.brand {
+  font-weight: 900;
+  letter-spacing: -1.8px;
+  font-size: 27px;
+}
+.brand sup {
+  font-size: 12px;
+  vertical-align: top;
+  position: relative;
+  top: 3px;
+  letter-spacing: -0.5px;
+}
+.brand-c {
+  color: var(--blue);
+}
+nav a:hover,
+.text-link:hover,
+.footer-bottom a:hover {
+  color: var(--blue);
+}
+.eyebrow,
+.mini-label,
+.section-label,
+.scroll,
+.hero-note,
+.status,
+.footer-bottom {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+}
+.live-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--blue);
+  flex-shrink: 0;
+}
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  padding: 17px 23px;
+  font-size: 12px;
+  font-weight: 600;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+.button:hover {
+  background: var(--blue);
+  transform: translateY(-2px);
+}
+.dark {
+  background: var(--ink);
+  color: white;
+}
+.button span {
+  font-size: 20px;
+  line-height: 1;
+}
+.outline {
+  -webkit-text-stroke: 1px #6f737b;
+  color: transparent;
+}
+.asterisk {
+  color: var(--blue);
+}
+.section {
+  padding: 100px 7%;
+}
+.section-label {
+  color: #626775;
+  margin-bottom: 42px;
+}
+h2 {
+  font-size: clamp(29px, 3.3vw, 49px);
+  font-weight: 700;
+  letter-spacing: -2px;
+  line-height: 1.4;
+  margin: 0 0 30px;
+}
+.blue {
+  color: var(--blue);
+}
+.body-copy {
+  font-size: 14px;
+  line-height: 2;
+  color: #666a74;
+  max-width: 460px;
+  margin: 22px 0;
+}
+.text-link {
+  display: inline-flex;
+  gap: 65px;
+  font-size: 12px;
+  font-weight: 600;
+  border-bottom: 1px solid #969aa3;
+  padding: 16px 0;
+  margin-top: 20px;
+}
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 40px;
+}
+.section-heading h2 {
+  margin: 0;
+}
+.section-heading > p {
+  font-size: 13px;
+  line-height: 1.9;
+  color: #6b6d76;
+}
+.skip {
+  position: fixed;
+  top: -80px;
+  left: 20px;
+  background: white;
+  padding: 15px;
+  z-index: 100;
+}
+.skip:focus {
+  top: 10px;
+}
