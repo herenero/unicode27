@@ -1,40 +1,63 @@
 import { site } from '../data/site';
+import { useState } from 'react';
+
+const images = ['/assets/unicode1.jpg', '/assets/unicode2.jpg', '/assets/unicode3.jpg'];
 
 export default function About() {
+  const [imageIndex, setImageIndex] = useState(0);
+  const changeImage = (direction) =>
+    setImageIndex((index) => (index + direction + images.length) % images.length);
   return (
     <section id="about" className="section about">
-      <div className="section-label">01 / ABOUT UNICODE</div>
+      <div className="section-label">01 / 행사 개요</div>
       <div className="about-grid">
         <div>
           <h2>
-            우리의 다음 게임은,
-            <br />이 만남에서 시작됩니다<span className="blue">.</span>
+            {site.name} {site.edition}
           </h2>
           <p className="body-copy">
-            혼자 고민하던 아이디어가 누군가의 경험을 만나
-            <br className="desktop" /> 새로운 가능성으로 이어지는 순간.
-          </p>
-          <p className="body-copy">
             UNICODE는 게임을 만드는 사람들이 경험과 영감을 나누는 인디 게임 개발자
-            컨퍼런스입니다. 각자의 코드와 이야기가 모여, 함께 만드는 내일을 이야기합니다.
+            컨퍼런스입니다.
           </p>
-          <a className="text-link" href="#program">
-            함께할 경험 살펴보기 <span>↘</span>
-          </a>
         </div>
-        <figure className="poster">
-          <img
-            src="/assets/poster.png"
-            alt={`푸른빛과 노란빛이 번지는 ${site.name} ${site.edition} 그래픽`}
-            loading="lazy"
-          />
-          <figcaption>
-            DIFFERENT CODES. ONE COMMUNITY.
-            <span>
-              {site.name} / {site.edition}
+        <div
+          className="about-gallery"
+          role="region"
+          aria-roledescription="캐러셀"
+          aria-label="UNICODE 행사 사진"
+        >
+          <div className="about-gallery-viewport">
+            <div
+              className="about-gallery-track"
+              style={{ transform: `translateX(-${imageIndex * 100}%)` }}
+            >
+              {images.map((src, index) => (
+                <img
+                  key={src}
+                  className="about-gallery-image"
+                  src={src}
+                  alt={`UNICODE 행사 사진 ${index + 1}`}
+                  aria-hidden={index !== imageIndex}
+                />
+              ))}
+            </div>
+          </div>
+          <div className="about-gallery-controls">
+            <button type="button" onClick={() => changeImage(-1)} aria-label="이전 사진">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="m14 6-6 6 6 6" />
+              </svg>
+            </button>
+            <span aria-live="polite" aria-atomic="true">
+              {imageIndex + 1} / {images.length}
             </span>
-          </figcaption>
-        </figure>
+            <button type="button" onClick={() => changeImage(1)} aria-label="다음 사진">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="m10 6 6 6-6 6" />
+              </svg>
+            </button>
+          </div>
+        </div>
       </div>
     </section>
   );

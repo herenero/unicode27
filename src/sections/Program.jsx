@@ -1,44 +1,94 @@
-import { Fragment } from 'react';
-import { programs } from '../data/programs';
+import { sessionDays, sessionPage } from '../data/sessions';
+import { useLayoutEffect, useRef, useState } from 'react';
+
+function FittedText({ as: Tag, children, className }) {
+  const ref = useRef(null);
+
+  useLayoutEffect(() => {
+    const element = ref.current;
+    let disposed = false;
+    const fit = () => {
+      if (disposed) return;
+      element.style.fontSize = '';
+      const maximum = parseFloat(getComputedStyle(element).fontSize);
+      for (let size = maximum; size >= 10; size -= 0.5) {
+        element.style.fontSize = `${size}px`;
+        if (
+          element.scrollHeight <= element.clientHeight &&
+          element.scrollWidth <= element.clientWidth
+        )
+          break;
+      }
+    };
+    const observer = new ResizeObserver(fit);
+    observer.observe(element);
+    document.fonts.ready.then(fit);
+    fit();
+    return () => {
+      disposed = true;
+      observer.disconnect();
+    };
+  }, [children]);
+
+  return (
+    <Tag ref={ref} className={className}>
+      {children}
+    </Tag>
+  );
+}
 
 export default function Program() {
+  const [activeDay, setActiveDay] = useState(sessionDays[0]?.id);
+
   return (
     <section id="program" className="section program">
-      <div className="section-label">02 / THE EXPERIENCE</div>
-      <div className="section-heading">
-        <h2>
-          생각을 나누고,
-          <br />
-          가능성을 플레이하다.
-        </h2>
-        <p>
-          UNICODE에서 이어질 세 가지 경험.
-          <br />
-          상세 프로그램과 연사 정보는 추후 공개됩니다.
-        </p>
+      <div className="section-label">02 / 세션 소개</div>
+      <h1>{sessionPage.title}</h1>
+      <div className="session-day-tabs" role="group" aria-label="세션 날짜 선택">
+        {sessionDays.map(({ id, date }, index) => (
+          <button
+            key={id}
+            type="button"
+            aria-pressed={activeDay === id}
+            aria-controls={`${id}-sessions`}
+            onClick={() => setActiveDay(id)}
+          >
+            <span>DAY {String(index + 1).padStart(2, '0')}</span>
+            {date}
+          </button>
+        ))}
       </div>
-      <div className="programs">
-        {programs.map((program, index) => (
-          <article key={program.id}>
-            <span className="number">{String(index + 1).padStart(2, '0')}</span>
-            <div
-              className={`program-icon ${program.iconClassName ?? ''}`.trim()}
-              aria-hidden="true"
-            >
-              {program.icon}
+      <div className="session-schedule">
+        {sessionDays.map(({ id, date, sessions }, dayIndex) => (
+          <section
+            key={id}
+            id={`${id}-sessions`}
+            className="session-day"
+            data-active={activeDay === id}
+            aria-labelledby={id}
+          >
+            <div className="session-day-heading">
+              <span>DAY {String(dayIndex + 1).padStart(2, '0')}</span>
+              <h2 id={id}>{date}</h2>
             </div>
-            <p className="mini-label">{program.label}</p>
-            <h3>{program.title}</h3>
-            <p>
-              {program.description.map((line, lineIndex) => (
-                <Fragment key={lineIndex}>
-                  {lineIndex > 0 && <br />}
-                  {line}
-                </Fragment>
+            <div className="session-list">
+              {sessions.map((session, index) => (
+                <article className="session-card" key={session.id}>
+                  <div className="session-card-top">
+                    <span className="session-number">
+                      SESSION {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <span className="session-time">{session.time}</span>
+                  </div>
+                  <FittedText as="h3">{session.title}</FittedText>
+                  <dl className="session-speaker">
+                    <dt>연사</dt>
+                    <FittedText as="dd">{session.speaker}</FittedText>
+                  </dl>
+                </article>
               ))}
-            </p>
-            <span className="status">{program.status}</span>
-          </article>
+            </div>
+          </section>
         ))}
       </div>
     </section>

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { navigation, site } from '../../data/site';
 
-export default function Header() {
+export default function Header({ currentPage }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButtonRef = useRef(null);
 
@@ -18,8 +18,8 @@ export default function Header() {
 
   return (
     <header>
-      <a className="brand" href="#" aria-label={`${site.name} ${site.edition} 홈`}>
-        UNI<span className="brand-c">C</span>ODE <sup>{site.edition}</sup>
+      <a className="brand" href="/about/" aria-label={`${site.name} ${site.edition} 홈`}>
+        UNICODE {site.edition}
       </a>
       <button
         ref={menuButtonRef}
@@ -30,23 +30,17 @@ export default function Header() {
         aria-expanded={menuOpen}
         aria-controls="navigation"
       >
-        MENU <span>{menuOpen ? '−' : '＋'}</span>
+        MENU <span className="menu-icon" aria-hidden="true" />
       </button>
       <nav id="navigation" className={menuOpen ? 'open' : ''} aria-label="주 메뉴">
-        {navigation.map(({ href, label, highlighted }) => (
+        {navigation.map(({ href, label }) => (
           <a
             key={href}
             href={href}
-            className={highlighted ? 'nav-cta' : undefined}
+            aria-current={href === `/${currentPage}/` ? 'page' : undefined}
             onClick={() => setMenuOpen(false)}
           >
             {label}
-            {highlighted && (
-              <>
-                {' '}
-                <span>↗</span>
-              </>
-            )}
           </a>
         ))}
       </nav>

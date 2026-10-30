@@ -3,55 +3,46 @@ import { site } from '../data/site';
 export default function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-title">
-      <div className="eyebrow">
-        <span className="live-dot"></span> INDIE GAME DEVELOPER CONFERENCE{' '}
-        <span className="edition">THE NEXT CHAPTER / {site.edition}</span>
-      </div>
       <h1
         id="hero-title"
         className="hero-word"
         aria-label={`${site.name} ${site.edition}`}
       >
-        <span>UNI</span>
-        <span className="moving c">C</span>
-        <span>O</span>
-        <span className="moving d">D</span>
-        <span>E</span>
-        <span className="year">{site.edition}</span>
+        <img
+          className="hero-title-image"
+          src="/assets/unicode_title.png"
+          alt={`${site.name} ${site.edition}`}
+          width="7929"
+          height="1185"
+          fetchPriority="high"
+        />
       </h1>
       <div className="hero-bottom">
         <div>
-          <p className="hero-korean">
-            서로 다른 코드,
+          <p className="hero-korean">UNIDEV Conference of Developers & Engineers</p>
+          <p className="hero-info">
+            11.07 - 11.08 <br />
+            74, Gwacheon-daero 7 Gwacheon-si, Gyeonggi-do
             <br />
-            하나의 가능성.
+            B1 Auditorium
           </p>
-          <p className="hero-description">
-            게임을 만드는 우리의 이야기.
-            <br />
-            배움과 영감, 그리고 새로운 연결이 시작되는 곳.
-          </p>
-          <a className="button dark" href="#about">
-            UNICODE 만나보기 <span>↗</span>
+          <a className="button dark hero-session-link" href="/program/">
+            세션 보러 가기 <span aria-hidden="true">↗</span>
           </a>
         </div>
         <div className="hero-note">
-          <span className="mini-label">MADE OF DIFFERENT CODES.</span>
-          <span>CONNECTED BY ONE PASSION.</span>
-          <div className="host">
-            HOSTED BY{' '}
-            <strong>
-              <span className="host-icon">◈</span> {site.host}
-            </strong>
-          </div>
+          {site.hostImage && (
+            <div className="host">
+              <p>Hosted by</p>
+              <img
+                className="host-image"
+                src={site.hostLogo}
+                alt={`주최: ${site.host}`}
+              />
+            </div>
+          )}
         </div>
       </div>
-      <a href="#about" className="scroll">
-        SCROLL TO EXPLORE <span>↓</span>
-      </a>
-      <span className="hero-cross" aria-hidden="true">
-        +
-      </span>
     </section>
   );
 }

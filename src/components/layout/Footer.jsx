@@ -4,10 +4,9 @@ export default function Footer() {
   return (
     <footer>
       <div className="footer-top">
-        <a className="brand" href="#">
-          {site.name} <sup>{site.edition}</sup>
+        <a className="brand" href="/about/">
+          {site.name} {site.edition}
         </a>
-        <p>{site.tagline}</p>
         <a href={`mailto:${site.email}`}>{site.email} ↗</a>
       </div>
       <div className="footer-bottom">
