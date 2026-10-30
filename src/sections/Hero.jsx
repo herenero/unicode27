@@ -1,3 +1,4 @@
+import { sitePath } from '../utils/paths';
 import { site } from '../data/site';
 
 export default function Hero() {
@@ -10,7 +11,7 @@ export default function Hero() {
       >
         <img
           className="hero-title-image"
-          src="/assets/unicode_title.png"
+          src={sitePath('assets/unicode_title.png')}
           alt={`${site.name} ${site.edition}`}
           width="7929"
           height="1185"
@@ -26,7 +27,7 @@ export default function Hero() {
             <br />
             B1 Auditorium
           </p>
-          <a className="button dark hero-session-link" href="/program/">
+          <a className="button dark hero-session-link" href={sitePath('program/')}>
             세션 보러 가기 <span aria-hidden="true">↗</span>
           </a>
         </div>

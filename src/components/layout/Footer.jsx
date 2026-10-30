@@ -1,10 +1,11 @@
+import { sitePath } from '../../utils/paths';
 import { site } from '../../data/site';
 
 export default function Footer() {
   return (
     <footer>
       <div className="footer-top">
-        <a className="brand" href="/about/">
+        <a className="brand" href={sitePath('about/')}>
           {site.name} {site.edition}
         </a>
         <a href={`mailto:${site.email}`}>{site.email} ↗</a>

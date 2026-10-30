@@ -46,6 +46,12 @@ VITE_GOOGLE_MAPS_API_KEY=발급받은_API_키
 
 ## 배포
 
+GitHub Pages는 저장소 Settings → Pages → Source를 **GitHub Actions**로 설정합니다. `main`에 푸시하면 `.github/workflows/jekyll-gh-pages.yml`이 Node로 Vite를 빌드하고 `dist/`를 배포합니다. 파일명은 기존 것을 유지하지만 Jekyll은 사용하지 않습니다. GitHub Pages의 기본 경로를 자동으로 반영하므로 `/unicode27/` 주소와 사용자 지정 도메인을 모두 지원합니다.
+
+지도 사용 시 Settings → Secrets and variables → Actions에서 `VITE_GOOGLE_MAPS_API_KEY`라는 Repository secret에 API 키를 등록합니다. 로컬 `.env.local`은 GitHub 빌드에 전달되지 않습니다.
+
+로컬에서 하위 경로를 검증하려면 `npm run build -- --base=/unicode27/`로 빌드한 다음 `npm run preview`를 실행해 `/unicode27/` 주소를 확인합니다.
+
 `npm run build`가 생성한 `dist/` 전체를 정적 호스팅에 배포합니다. 세 페이지의 직접 접근과 새로고침을 위해 하위 폴더의 HTML도 함께 배포해야 합니다. `node_modules/`, `.env.local`, 소스 파일은 배포 결과에 복사하지 않습니다.
 
 빌드 후 확인할 항목: 페이지 이동 및 뒤로 가기, 모바일 메뉴와 날짜 선택, 사진 슬라이더, 지도 및 길찾기 링크.

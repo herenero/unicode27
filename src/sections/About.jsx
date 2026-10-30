@@ -1,7 +1,10 @@
+import { sitePath } from '../utils/paths';
 import { site } from '../data/site';
 import { useState } from 'react';
 
-const images = ['/assets/unicode1.jpg', '/assets/unicode2.jpg', '/assets/unicode3.jpg'];
+const images = ['assets/unicode1.jpg', 'assets/unicode2.jpg', 'assets/unicode3.jpg'].map(
+  sitePath,
+);
 
 export default function About() {
   const [imageIndex, setImageIndex] = useState(0);

@@ -1,3 +1,4 @@
+import { sitePath } from '../../utils/paths';
 import { useEffect, useRef, useState } from 'react';
 import { navigation, site } from '../../data/site';
 
@@ -18,7 +19,11 @@ export default function Header({ currentPage }) {
 
   return (
     <header>
-      <a className="brand" href="/about/" aria-label={`${site.name} ${site.edition} 홈`}>
+      <a
+        className="brand"
+        href={sitePath('about/')}
+        aria-label={`${site.name} ${site.edition} 홈`}
+      >
         UNICODE {site.edition}
       </a>
       <button
@@ -37,7 +42,7 @@ export default function Header({ currentPage }) {
           <a
             key={href}
             href={href}
-            aria-current={href === `/${currentPage}/` ? 'page' : undefined}
+            aria-current={href === sitePath(`${currentPage}/`) ? 'page' : undefined}
             onClick={() => setMenuOpen(false)}
           >
             {label}

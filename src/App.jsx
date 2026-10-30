@@ -6,9 +6,10 @@ import Guide from './sections/Guide';
 import Hero from './sections/Hero';
 import Organization from './sections/Organization';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { pageFromPath } from './utils/paths';
 
 const pages = { about: About, program: Program, guide: Guide };
-const readPage = () => window.location.pathname.split('/').filter(Boolean)[0] || 'about';
+const readPage = () => pageFromPath(window.location.pathname) || 'about';
 
 export default function App() {
   const [page, setPage] = useState(readPage);
@@ -48,8 +49,7 @@ export default function App() {
       return;
     const url = new URL(link.href);
     if (url.origin !== window.location.origin || url.hash || url.search) return;
-    const nextPage =
-      url.pathname === '/' ? 'about' : url.pathname.replace(/^\/|\/$/g, '');
+    const nextPage = pageFromPath(url.pathname);
     if (!Object.hasOwn(pages, nextPage)) return;
     event.preventDefault();
     if (nextPage === page) {
