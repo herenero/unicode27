@@ -345,11 +345,24 @@
 }
 
 .session-speaker dd {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
   flex: 1;
   min-width: 0;
   white-space: nowrap;
   line-height: 1.4;
   margin: 0;
+}
+
+.session-speaker-name,
+.session-speaker-affiliation {
+  flex-shrink: 0;
+}
+
+.session-speaker-affiliation {
+  margin-left: auto;
+  text-align: right;
 }
 
 @media (max-width: 640px) {

@@ -83,7 +83,14 @@ export default function Program() {
                   <FittedText as="h3">{session.title}</FittedText>
                   <dl className="session-speaker">
                     <dt>연사</dt>
-                    <FittedText as="dd">{session.speaker}</FittedText>
+                    <FittedText as="dd">
+                      <span className="session-speaker-name">{session.speaker}</span>
+                      {session.affiliation && (
+                        <span className="session-speaker-affiliation">
+                          {session.affiliation}
+                        </span>
+                      )}
+                    </FittedText>
                   </dl>
                 </article>
               ))}
