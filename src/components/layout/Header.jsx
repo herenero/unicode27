@@ -21,7 +21,7 @@ export default function Header({ currentPage }) {
     <header>
       <a
         className="brand"
-        href={sitePath('about/')}
+        href={sitePath()}
         aria-label={`${site.name} ${site.edition} 홈`}
       >
         UNICODE {site.edition}
@@ -42,7 +42,11 @@ export default function Header({ currentPage }) {
           <a
             key={href}
             href={href}
-            aria-current={href === sitePath(`${currentPage}/`) ? 'page' : undefined}
+            aria-current={
+              href === sitePath(currentPage === 'about' ? '' : `${currentPage}/`)
+                ? 'page'
+                : undefined
+            }
             onClick={() => setMenuOpen(false)}
           >
             {label}

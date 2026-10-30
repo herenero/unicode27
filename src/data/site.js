@@ -17,7 +17,7 @@ export const site = {
 
 // 각 페이지의 독립 주소입니다.
 export const navigation = [
-  { href: sitePath('about/'), label: '행사 개요' },
+  { href: sitePath(), label: '행사 개요' },
   { href: sitePath('program/'), label: '세션 소개' },
   { href: sitePath('guide/'), label: '오시는 길' },
 ];
