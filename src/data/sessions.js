@@ -28,7 +28,7 @@ export const sessionDays = [
         id: 'day-1-session-3',
         time: '14:00 - 14:40',
         title: '<스테퍼 레트로> 기획부터 QA까지, 게임의 품질을 높이는 과정',
-        speaker: '김준하',
+        speaker: '김준하 <스테퍼 레트로> 기획·QA',
         affiliation: '팀 테트라포드',
       },
       {
@@ -42,8 +42,8 @@ export const sessionDays = [
         id: 'day-1-session-5',
         time: '16:00 - 16:40',
         title: 'Unity CLI의 활용사례와 AI 게임개발의 방향성',
-        speaker: '김범주 본부장',
-        affiliation: '유니티 코리아',
+        speaker: '김범주 APAC Advocacy Leader',
+        affiliation: 'Unity Technologies Korea',
       },
     ],
   },
@@ -62,7 +62,7 @@ export const sessionDays = [
         id: 'day-2-session-2',
         time: '12:00 - 12:40',
         title: 'Logging과 Funnel의 중요성',
-        speaker: '신대성',
+        speaker: '신대성 <컬러 스위퍼> 개발',
         affiliation: '팀 아르까',
       },
       {
